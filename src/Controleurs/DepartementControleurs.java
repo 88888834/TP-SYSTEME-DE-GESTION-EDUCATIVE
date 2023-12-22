@@ -41,7 +41,7 @@ public class DepartementControleurs {
         }
     }
 
-    private static void creerdep() {
+    private static void creerdep() throws SQLException, ClassNotFoundException {
 //        int id = Main.getIntInput("Sélectionnez un enseignant par id :");
         String descrip = Main.getStringInput("Entrez description :");
 
@@ -58,11 +58,13 @@ public class DepartementControleurs {
         } catch (SQLException e) {
             e.printStackTrace(); // Handle the SQL exception appropriately
         }
+        afficherDeps();
+        showMenu();
     }
 
 
 
-    public static void afficherDeps() {
+    public static void afficherDeps() throws SQLException, ClassNotFoundException {
         try {
             List<String> departments = DepartementService.showDep();
             for (String department : departments) {
@@ -72,6 +74,8 @@ public class DepartementControleurs {
             e.printStackTrace();
             System.out.println("Failed to display departments.");
         }
+        
+        showMenu();
     }
 
 
@@ -117,7 +121,7 @@ public class DepartementControleurs {
 //        showMenu();
 //
 //    }
-    public static void detruireDep(){
+    public static void detruireDep() throws SQLException, ClassNotFoundException {
 
         afficherDeps();
             int id = Main.getIntInput("Sélectionnez un département par id :");
