@@ -132,7 +132,7 @@ public class DepartementControleurs {
                 System.out.println("Échec de la suppression du département.");
             }
         afficherDeps();
-
+        showMenu();
     }
 
 

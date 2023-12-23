@@ -82,6 +82,7 @@ public static void showEnseignants() throws SQLException, ClassNotFoundException
         int departement = Main.getIntInput("Entrez departement id :");
         EnseignantService.addEns(nom,prenom,email,grade,departement);
         System.out.println("Enseignant created successfully");
+        showMenu();
     }
 
     public static boolean exists(int id) {
@@ -114,6 +115,7 @@ public static void showEnseignants() throws SQLException, ClassNotFoundException
         int id = Main.getIntInput("Sélecionnez un enseignant par id :");
         EnseignantService.deleteEnsById( id);
         showEnseignants();
+        showMenu();
     }
 
 }
