@@ -11,6 +11,8 @@ import Main.Main;
 
 
 public class DepartementControleurs {
+
+
     public static void showMenu() throws SQLException, ClassNotFoundException {
         System.out.println("-------------------------[ Départements ]---------------------------");
 
@@ -40,7 +42,7 @@ public class DepartementControleurs {
                 Main.showPrincipalMenu();
         }
     }
-
+/// create departement
     private static void creerdep() throws SQLException, ClassNotFoundException {
 
         String descrip = Main.getStringInput("Entrez description :");
@@ -64,6 +66,7 @@ public class DepartementControleurs {
 
 
 
+    ///this method show us all departmenets in departmenets database
     public static void afficherDeps() throws SQLException, ClassNotFoundException {
         try {
             List<String> departments = DepartementService.showDep();
