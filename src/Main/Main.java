@@ -28,8 +28,8 @@ public class Main {
 
 
         System.out.println("1: Pour gérer les départements");
-        System.out.println("2: Pour gérer les filières");
-        System.out.println("3: Pour gérer les enseignants");
+        System.out.println("2: Pour gérer les enseignants");
+        System.out.println("3: Pour gérer les  filières ");
         System.out.println("4: Pour gérer les modules");
         System.out.println("5: Pour gérer les étudiants");
         System.out.println("0: Pour sortir");
@@ -39,9 +39,9 @@ public class Main {
             case 1:
                 DepartementControleurs.showMenu();
                 break;
-            case 2:FillieresControleurs.showMenu();
+            case 2:EnseignantControleurs.showMenu();
                 break;
-            case 3:EnseignantControleurs.showMenu();
+            case 3:FillieresControleurs.showMenu();
                 break;
             case 4:ModulesControleurs.showMenu();
                 break;
@@ -52,6 +52,9 @@ public class Main {
         }
 
     }
+
+
+
 
 //    public static int getIntInput(String s) {     Scanner scan = new Scanner(System.in);
 //        String message = "Entrez un nombre entier : ";

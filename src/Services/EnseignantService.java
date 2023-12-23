@@ -4,12 +4,36 @@ import database.Database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class EnseignantService {
 
     private static boolean isEnseignant;
+
+    public static List<String> showEns() throws SQLException {
+        List<String> enseignant = new ArrayList<>();
+        // Corrected SQL query
+        String query = "SELECT e.nom, e.prenom, e.email, e.grade, d.dep_id " +
+                "FROM enseignants e " +
+                "JOIN departements d ON e.dep_id = d.dep_id;";
+
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/systemedegestioneducative", "root", "");
+             PreparedStatement pstmt = con.prepareStatement(query);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                String enseignants = "Department ID: " + rs.getInt("dep_id") +
+                        ", Enseignant: " + rs.getString("nom") + " " + rs.getString("prenom") +
+                        ", Email: " + rs.getString("email") + ", Grade: " + rs.getInt("grade");
+                enseignant.add(enseignants);
+            }
+        }
+        return enseignant;
+    }
+
+
 /// methode pour inserer les donnees au enseignant avec dep_id come un foreign key.
     public static Enseignants addEns( String nom, String prenom, String email, int grade, int departement )
             throws ClassNotFoundException, SQLException {

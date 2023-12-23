@@ -37,43 +37,36 @@ public class EnseignantControleurs {
                 Main.showPrincipalMenu();
         }
     }
-    public static List<String> getEnseignant(int id) {
-        List<Enseignants> enseignantsList = Database.enseignants;
-        String[] enseignantArray = new String[enseignantsList.size()];
-        for (int i = 0; i < enseignantsList.size(); i++) {
-            enseignantArray[i] = enseignantsList.get(i).getNom() + " " + enseignantsList.get(i).getPrenom();
+
+
+
+        public static Enseignants getEnseignant(int id) {
+            for (Enseignants enseignant : Database.enseignants) {
+                if (enseignant.getId() == id) {
+                    return enseignant;
+                }
+            }
+            return null;
         }
-        return List.of(enseignantArray);
+
+
+
+    public static void showEnseignants() {
+        try {
+            List<String> enseignants = EnseignantService.showEns();
+            if (enseignants.isEmpty()) {
+                System.out.println("Aucun enseignant trouvé.");
+            } else {
+                for (String enseignant : enseignants) {
+                    System.out.println(enseignant);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des enseignants : " + e.getMessage());
+        }
     }
 
-//    public static void showEnseignants() {
-//        for (Enseignants enseignant : Database.enseignants) {
-//            System.out.print("Id : " + enseignant.getId());
-//            System.out.print(" | Nom : " + enseignant.getNom() + " " + enseignant.getPrenom());
-//            System.out.print(" | Email : " + enseignant.getEmail());
-//
-//            String[] enseignantInfo = getEnseignant().toArray(new String[0]);
-//            if (enseignantInfo != null) {
-//                String enseignantNomPrenom = enseignant.getNom() + " " + enseignant.getPrenom();
-//                for (int j = 0; j < enseignantInfo.length; j++) {
-//                    if (enseignantNomPrenom.equals(enseignantInfo[j])) {
-//                        System.out.print(" | Chef : " + enseignantInfo[j]);
-//                        break;
-//                    }
-//                }
-//            }}}
-public static void showEnseignants() throws SQLException, ClassNotFoundException {
-        List<Enseignants> enseignants=EnseignantService.getAllEns();
-        if(enseignants.isEmpty()){
-            System.out.println("enseignant non trouvable");
-        }
-        else {
-            for(Enseignants   enseignant:enseignants) {
-                System.out.println("id"+enseignant.getId()+"nom"+enseignant.getNom()+"prenom"+enseignant.getPrenom()+"email"+enseignant.getEmail()+"grade"+enseignant.getGrade()+"Departementid"+enseignant.getDepartement());
-            }
-        }
-        showMenu();
-}
+
     public static  void createEnseignant() throws SQLException, ClassNotFoundException {
         String nom = Main.getStringInput("Entrez nom :");
         String prenom = Main.getStringInput("Entrez le prenom :");
