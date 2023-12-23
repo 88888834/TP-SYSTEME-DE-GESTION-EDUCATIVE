@@ -21,7 +21,7 @@ public class EtudiantControleurs {
         System.out.println("4: Delete etudiant");
             System.out.println("0: Go to the principal menu");
 
-        //"Veuillez sélectionner une option : ")
+
         int option = Main.getIntInput("Veuillez sélectionner une option : ");
         switch(option) {
             case 1:

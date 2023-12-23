@@ -56,20 +56,7 @@ public class Main {
 
 
 
-//    public static int getIntInput(String s) {     Scanner scan = new Scanner(System.in);
-//        String message = "Entrez un nombre entier : ";
-//        if (s.length() > 0 ){
-//            message = s;
-//        System.out.print(message);}
-//
-//
-//        // This method reads the number provided using keyboard
-//        int num = scan.nextInt();
-//
-//        // Closing Scanner after the use
-//        //  scan.close();
-//        return num;
-//    }
+
 public static int getIntInput(String message) {
     Scanner scanner = new Scanner(System.in);
     int value = 0;
@@ -94,11 +81,8 @@ public static int getIntInput(String message) {
             message = msg[0] ;
         System.out.print(message);
 
-        // This method reads the number provided using keyboard
         String str = scan.nextLine();
 
-        // Closing Scanner after the use
-        //  scan.close();
         return str;
     }
 

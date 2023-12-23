@@ -15,7 +15,6 @@ public class DepartementService {
             forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            // Handle the exception or exit the program if necessary
         }
     }
 
@@ -46,7 +45,6 @@ public class DepartementService {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/systemedegestioneducative", "root", "");
         Departements departement = new Departements();
 
-        // Insert Department
         String insertDepartmentStatement = "INSERT INTO departements ( description) VALUES ( ?)";
         try (PreparedStatement pstmt = con.prepareStatement(insertDepartmentStatement, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -66,7 +64,6 @@ public class DepartementService {
             }
         }
         System.out.println("Deparatement has created successfully!");
-        // Insert Teachers and link to Department
         String insertEnseignantStatement = "INSERT INTO enseignants (nom,dep_id) VALUES (?,?)";
         String insertLinkStatement = "INSERT INTO enseignants (dep_id) VALUES (?)";
 
@@ -85,9 +82,9 @@ public class DepartementService {
                     if (generatedKeys.next()) {
                         int enseignantId = generatedKeys.getInt(1);
 
-                        // Link Department and Teacher
+
                         try (PreparedStatement linkPstmt = con.prepareStatement(insertLinkStatement)) {
-//                            linkPstmt.setInt(1, id);
+
                             linkPstmt.setInt(1, Integer.parseInt(descrip));
                             linkPstmt.executeUpdate();
                         }
@@ -147,18 +144,18 @@ public class DepartementService {
         try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/systemedegestioneducative",
                 "root", ""))
                 {
-                // Update department description
+                // Update department description&id
                 try (PreparedStatement pstmt = con.prepareStatement(updateDepartmentSql)) {
                     pstmt.setString(1, newDescription);
                     pstmt.setInt(2, depId);
                     pstmt.executeUpdate();
                 }
 
-                // Update teacher's name for this department
+                // Update enseignant nom et prenom pour ce department
                 try (PreparedStatement pstmt = con.prepareStatement(updateEnseignantSql)) {
                     pstmt.setString(1, newNom);
                     pstmt.setString(2, newPrenom);
-                    pstmt.setInt(3, depId); // Ensure this line sets the third parameter
+                    pstmt.setInt(3, depId);
                     pstmt.executeUpdate();
                 }
             }

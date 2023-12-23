@@ -14,7 +14,6 @@ public class EnseignantService {
 
     public static List<String> showEns() throws SQLException {
         List<String> enseignant = new ArrayList<>();
-        // Corrected SQL query
         String query = "SELECT e.nom, e.prenom, e.email, e.grade, d.dep_id " +
                 "FROM enseignants e " +
                 "JOIN departements d ON e.dep_id = d.dep_id;";

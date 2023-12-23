@@ -30,15 +30,6 @@ public class Filieres {
         this.modules=new ArrayList<Module>();
     }
 
-//    public void ajouterModule(Module module) {
-//        if (module != null) {
-//            this.modules.add(module);
-//        }
-//    }
-//
-//    public void supprimerModule(Module module) {
-//        this.modules.remove(module);
-//    }
 
     public List<Module> getModules() {
         return modules;

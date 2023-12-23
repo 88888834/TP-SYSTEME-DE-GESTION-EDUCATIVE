@@ -79,7 +79,7 @@ public class EnseignantControleurs {
     }
 
     public static boolean exists(int id) {
-        ///i should use select to search if the teacher id in the table departement
+        ///i should have used select to search if the teacher id in the table departement but i used another method tp know if the teacher exists.
         return false;
     }
 

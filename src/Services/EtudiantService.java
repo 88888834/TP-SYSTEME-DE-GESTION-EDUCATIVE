@@ -12,7 +12,6 @@ public class EtudiantService {
 
     public static Etudiants updateEtud(String nom, String prenom, String email ){
         Etudiants updatedEtudiants = new Etudiants();
-        // ... other code ...
         return updatedEtudiants;
     }
     public static ArrayList<Etudiants>   deleteEtudById(int id) {
