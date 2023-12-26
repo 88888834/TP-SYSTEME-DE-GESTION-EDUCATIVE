@@ -18,7 +18,7 @@ public class ModulesControleurs {
 
 
         public static void showMenu() throws SQLException, ClassNotFoundException {
-            System.out.println("********************[ Etudiants ]*************************");
+            System.out.println("********************[ Modules ]*************************");
 
 
             System.out.println("1: Show modules");
@@ -28,7 +28,7 @@ public class ModulesControleurs {
             System.out.println("0: Go to the principal menu");
 
             //"Veuillez sélectionner une option : ")
-            int option = Main.getIntInput("Veuillez sélectionner une option : ");
+                 int option = Main.getIntInput("Enter the option number: ");
             switch(option) {
                 case 1:
                     showModules();
@@ -60,7 +60,7 @@ public class ModulesControleurs {
             for (Modules modules : Database.modules) {
                 System.out.print("Id : " + modules.getId());
                 System.out.print(" | Description : " + modules.getMdescrip() );
-                System.out.print(" | Enseignant : " + modules.getEnseignant());
+                System.out.print(" | teacher : " + modules.getEnseignant());
 
                 String[] modulesInfo = getModule();
                 if (modulesInfo != null) {
@@ -80,13 +80,13 @@ public class ModulesControleurs {
 
 
         public static  void createModule() throws SQLException, ClassNotFoundException {
-            int id = Main.getIntInput("Entrez id :");
-            String mdescrip = Main.getStringInput("Entrez la description :");
-            String enseignant  = Main.getStringInput("Entrez l'enaeignant :");
+                  int id = Main.getIntInput("Enter id :");
+            String mdescrip = Main.getStringInput("Enter description :");
+            String enseignant  = Main.getStringInput("Enter teacher :");
             ModuleService.addMod(id,  mdescrip,enseignant);
             Controleurs.EtudiantControleurs.showEtudiants();
 
-            System.out.println("Etudiant créé avec succès.");
+            System.out.println("Etudiant created successfully.");
             showModules();
             showMenu();
         }
@@ -99,9 +99,9 @@ public class ModulesControleurs {
             showModules();
                 Modules module;
             module = new Modules();
-            int id = Main.getIntInput("Sélecionnez un module par id :");
-            String mdescrip = Main.getStringInput("Entrez la description :");
-            String enseignant = Main.getStringInput("Entrez l'enseignant:");
+            int id = Main.getIntInput("Select module by id:");
+            String mdescrip = Main.getStringInput("Enter description :");
+            String enseignant = Main.getStringInput("Enter teacher:");
 
             Controleurs.ModulesControleurs.showModules();
             Controleurs.EtudiantControleurs.createEtudiant();

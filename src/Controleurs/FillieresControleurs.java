@@ -8,17 +8,17 @@ import database.Database;
 import Main.Main;
 public class FillieresControleurs {
     public static void showMenu() throws SQLException, ClassNotFoundException {
-        System.out.println("-------------------------[ Enseignants ]---------------------------");
+        System.out.println("-------------------------[ Sector ]---------------------------");
 
 
-        System.out.println("1: Pour afficher unE Filiere");
-        System.out.println("2: Pour ajouter les Filieres");
-        System.out.println("3: Pour modifier une Filiere");
-        System.out.println("4: Pour supprimer une Filiere");
-        System.out.println("0: Pour retourner au menu principal");
+        System.out.println("1: To show sectors");
+        System.out.println("2: to create a sector");
+        System.out.println("3: To modify a sector");
+        System.out.println("4: To delete a sector");
+        System.out.println("0: Return to the   principal menu");
 
         //"Veuillez sélectionner une option : ")
-        int option = Main.getIntInput("Veuillez sélectionner une option : ");
+        int option = Main.getIntInput("Enter the option number: ");
         switch(option) {
             case 1:
                 showFilliere();
@@ -61,10 +61,10 @@ public class FillieresControleurs {
                 }
             }}}
     public static  void createFilliere() {
-        String fdesc = Main.getStringInput("Entrez description :");
+        String fdesc = Main.getStringInput("Enter description :");
         FillieresControleurs.showFilliere();
 
-        System.out.println("Filiere créé avec succès.");
+        System.out.println("Sector created successfully");
         showFilliere();
     }
 
@@ -72,12 +72,12 @@ public class FillieresControleurs {
         showFilliere();
         Filieres filieres;
         filieres = new Filieres();
-        int fid = Main.getIntInput("Sélecionnez un enseignant par id :");
-        String fdesc = Main.getStringInput("Entrez la description :");
+        int fid = Main.getIntInput("Select teacher by id:");
+        String fdesc = Main.getStringInput("Enter description :");
 
 
         showFilliere();
-        int idEns = Main.getIntInput("Sélecionnez un enseignant par id :");
+        int idEns = Main.getIntInput("Select teacher by id:");
 
         Enseignants enseignant=new Enseignants();
 
@@ -88,7 +88,7 @@ public class FillieresControleurs {
     }
     public static void destroyFilliere(){
         showFilliere();
-        int fid = Main.getIntInput("Sélecionnez une filliere par id :");
+        int fid = Main.getIntInput("Select sector by id:");
         FilliereService.deleteFillById(fid);
         showFilliere();
     }

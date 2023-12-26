@@ -9,17 +9,17 @@ import Main.Main;
 public class EnseignantControleurs {
 
     public static void showMenu() throws SQLException, ClassNotFoundException {
-        System.out.println("-------------------------[ Enseignants ]---------------------------");
+        System.out.println("-------------------------[ Teachers ]---------------------------");
 
 
-        System.out.println("1: Pour afficher un enseignant");
-        System.out.println("2: Pour ajouter les enseignants");
-        System.out.println("3: Pour modifier un enseignant");
-        System.out.println("4: Pour supprimer un enseignant");
-        System.out.println("0: Pour retourner au menu principal");
+        System.out.println("1: To show teachers");
+        System.out.println("2: to create a teacher");
+        System.out.println("3: To modify a teacher");
+        System.out.println("4: To delete a teacher");
+        System.out.println("0: Return to the   principal menu");
 
         //"Veuillez sélectionner une option : ")
-        int option = Main.getIntInput("Veuillez sélectionner une option : ");
+        int option = Main.getIntInput("Enter the option number:");
         switch(option) {
             case 1:
                 showEnseignants();
@@ -55,24 +55,24 @@ public class EnseignantControleurs {
         try {
             List<String> enseignants = EnseignantService.showEns();
             if (enseignants.isEmpty()) {
-                System.out.println("Aucun enseignant trouvé.");
+                System.out.println("there is n no teacher with thoseb characteristics ");
             } else {
                 for (String enseignant : enseignants) {
                     System.out.println(enseignant);
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Erreur lors de la récupération des enseignants : " + e.getMessage());
+            System.out.println("  Error  : " + e.getMessage());
         }
     }
 
 
     public static  void createEnseignant() throws SQLException, ClassNotFoundException {
-        String nom = Main.getStringInput("Entrez nom :");
-        String prenom = Main.getStringInput("Entrez le prenom :");
-        String email = Main.getStringInput("Entrez email :");
-        int grade = Main.getIntInput("Entrez le grade :");
-        int departement = Main.getIntInput("Entrez departement id :");
+        String nom = Main.getStringInput("Enter last name :");
+        String prenom = Main.getStringInput("Enter first name :");
+        String email = Main.getStringInput("Enter email :");
+        int grade = Main.getIntInput(          "Enter score :");
+        int departement = Main.getIntInput("Enter departement id :");
         EnseignantService.addEns(nom,prenom,email,grade,departement);
         System.out.println("Enseignant created successfully");
         showMenu();
@@ -88,14 +88,14 @@ public class EnseignantControleurs {
         showEnseignants();
         Enseignants enseignant;
         enseignant = new Enseignants();
-        int id = Main.getIntInput("Sélecionnez un enseignant par id :");
-        String nom = Main.getStringInput("Entrez le nom :");
-        String prenom = Main.getStringInput("Entrez le prenom :");
-        String email = Main.getStringInput("Entrez le email :");
-        String grade = Main.getStringInput("Entrez le grade :");
+        int id = Main.getIntInput("Select teacher by id:");
+        String nom = Main.getStringInput("Enter last name :");
+        String prenom = Main.getStringInput("Enter first name:");
+        String email = Main.getStringInput("Enter email :");
+        String grade = Main.getStringInput("Enter score :");
 
         EnseignantControleurs.showEnseignants();
-        int idEns = Main.getIntInput("Sélecionnez un enseignant par id :");
+        int idEns = Main.getIntInput("Select teacher by id:");
 
         Departements dept = new Departements();
 
@@ -105,7 +105,7 @@ public class EnseignantControleurs {
     }
     public static void destroyEnseignant() throws SQLException, ClassNotFoundException {
         showEnseignants();
-        int id = Main.getIntInput("Sélecionnez un enseignant par id :");
+        int id = Main.getIntInput("Select teacher by id:");
         EnseignantService.deleteEnsById( id);
         showEnseignants();
         showMenu();

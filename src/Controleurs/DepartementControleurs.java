@@ -17,14 +17,14 @@ public class DepartementControleurs {
         System.out.println("-------------------------[ Départements ]---------------------------");
 
 
-        System.out.println("1: Pour ajouter un département");
-        System.out.println("2: Pour afficher les départements");
-        System.out.println("3: Pour modifier un département");
-        System.out.println("4: Pour supprimer un département");
-        System.out.println("0: Pour retourner au menu principal");
+        System.out.println("1: To show Deaprtements");
+        System.out.println("2: to create a departement");
+        System.out.println("3: To modify a departement");
+        System.out.println("4: To delete a departement");
+        System.out.println("0: Return to the   principal menu");
 
 
-        int option = Main.getIntInput(("Veuillez sélectionner une option : "));
+        int option = Main.getIntInput(("Enter the option number : "));
         switch(option) {
             case 1:
                 creerdep();
@@ -49,7 +49,7 @@ public class DepartementControleurs {
 
         List<String> enseignant = Arrays.asList();
 
-        String ens = Main.getStringInput("Entrez enseignant  :");
+        String ens = Main.getStringInput("Entrez teacher  :");
         try {
 
             DepartementService DepartmentService = new DepartementService();
@@ -115,12 +115,12 @@ public class DepartementControleurs {
     public static void detruireDep() throws SQLException, ClassNotFoundException {
 
         afficherDeps();
-            int id = Main.getIntInput("Sélectionnez un département par id :");
+            int id = Main.getIntInput("Select departement by id:");
             boolean deleted = DepartementService.deleteDeptById(id);
             if (deleted) {
-                System.out.println("Département supprimé avec succès!");
+                System.out.println("Departement has been deleted successfully");
             } else {
-                System.out.println("Échec de la suppression du département.");
+                System.out.println("Error while deleting Departement ");
             }
         afficherDeps();
         showMenu();

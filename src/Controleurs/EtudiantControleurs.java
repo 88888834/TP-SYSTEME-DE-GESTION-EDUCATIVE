@@ -22,7 +22,7 @@ public class EtudiantControleurs {
             System.out.println("0: Go to the principal menu");
 
 
-        int option = Main.getIntInput("Veuillez sélectionner une option : ");
+        int option = Main.getIntInput("Enter the option number: ");
         switch(option) {
             case 1:
                 showEtudiants();
@@ -52,7 +52,7 @@ public class EtudiantControleurs {
     public static void showEtudiants() throws SQLException, ClassNotFoundException {
         for (Etudiants etudiant : Database.etudiants) {
             System.out.print("Id : " + etudiant.getId());
-            System.out.print(" | Nom : " + etudiant.getNom() + " " + etudiant.getPrenom());
+            System.out.print(" | name : " + etudiant.getNom() + " " + etudiant.getPrenom());
             System.out.print(" | Email : " + etudiant.getEmail());
 
             String[] etudiantInfo = getEtudiant();
@@ -77,7 +77,7 @@ public class EtudiantControleurs {
         EtudiantService.addEtud(nom,  prenom,email);
         EtudiantControleurs.showEtudiants();
 
-        System.out.println("Etudiant créé avec succès.");
+        System.out.println("Etudiant created  successfully");
         showEtudiants();
         showMenu();
     }
@@ -89,14 +89,14 @@ public class EtudiantControleurs {
         showEtudiants();
         Etudiants etudiants;
         etudiants = new Etudiants();
-        int id = Main.getIntInput("Sélecionnez un etudiant par id :");
-        String nom = Main.getStringInput("Entrez le nom :");
-        String prenom = Main.getStringInput("Entrez le prenom :");
-        String email = Main.getStringInput("Entrez le email :");
+        int id = Main.getIntInput("Select student by id :");
+        String nom = Main.getStringInput("Enter  last name:");
+        String prenom = Main.getStringInput("Enter first name:");
+        String email = Main.getStringInput("Enter Email :");
 
 
         EtudiantControleurs.showEtudiants();
-        int idetud = Main.getIntInput("Sélecionnez un Etudiant par id :");
+        int idetud = Main.getIntInput("Select student by id :");
 
         Filieres filieres = new Filieres();
         // ... other code to initialize the Departements object ...
@@ -107,7 +107,7 @@ public class EtudiantControleurs {
     }
     public static void destroyEtudiant() throws SQLException, ClassNotFoundException {
         showEtudiants();
-        int id = Main.getIntInput("Sélecionnez un etudiant par id :");
+        int id = Main.getIntInput("Select student by id :");
         EtudiantService.deleteEtudById( id);
         showEtudiants();
         showMenu();
